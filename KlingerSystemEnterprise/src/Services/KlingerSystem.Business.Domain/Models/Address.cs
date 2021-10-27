@@ -17,7 +17,7 @@ namespace KlingerSystem.Business.Domain.Models
         public string City { get; private set; }
         public string State { get; private set; }
 
-        public Company Employee { get; private set; }
+        public Company Company { get; private set; }
 
         protected Address() { }
 

@@ -1,5 +1,7 @@
-﻿using KlingerSystem.Core.DomainObjects;
+﻿using KlingerSystem.Business.Domain.Message;
+using KlingerSystem.Core.DomainObjects;
 using KlingerSystem.Core.Interfaces;
+using KlingerSystem.Core.Tools;
 using System.Collections.Generic;
 
 namespace KlingerSystem.Business.Domain.Models
@@ -16,13 +18,21 @@ namespace KlingerSystem.Business.Domain.Models
 
         public Cnae(string devision, string description)
         {
+            SetCnae(devision, description);
+        }
+
+        public void SetCnae(string devision, string description)
+        {
             Devision = devision;
             Description = description;
+
+            IsValid();
         }
 
         public override void IsValid()
         {
-            base.IsValid();
+            Validation.CharactersValidate(Devision, 7, 7, ListCnaeMessages.DevisionText_Erro);
+            Validation.CharactersValidate(Description, 500, 5, ListCnaeMessages.DescriptionText_Erro);
         }
     }
 }

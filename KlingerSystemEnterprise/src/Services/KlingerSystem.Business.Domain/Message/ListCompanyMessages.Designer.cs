@@ -88,11 +88,29 @@ namespace KlingerSystem.Business.Domain.Message {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Matriz id inválido..
+        /// </summary>
+        public static string MatrizId_Erro {
+            get {
+                return ResourceManager.GetString("MatrizId_Erro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O campo Inscrição Municipal deve conter entre 5 e 20 caracteres..
         /// </summary>
         public static string MunicipalRegistrationText_Erro {
             get {
                 return ResourceManager.GetString("MunicipalRegistrationText_Erro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Número já adicionado..
+        /// </summary>
+        public static string NUMBER_REPIT_ERRO_MSG {
+            get {
+                return ResourceManager.GetString("NUMBER_REPIT_ERRO_MSG", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace KlingerSystem.Business.Domain.Message {
         public static string PHISYCAL_CNPJ_ERRO {
             get {
                 return ResourceManager.GetString("PHISYCAL_CNPJ_ERRO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Máximo de telefones permitidos, são 2..
+        /// </summary>
+        public static string PHONE_COUNT_MAX_ERRO_MSG {
+            get {
+                return ResourceManager.GetString("PHONE_COUNT_MAX_ERRO_MSG", resourceCulture);
             }
         }
         

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace KlingerSystem.Employee.Api.Configuration
+namespace KlingerSystem.Business.Api.Configuration
 {
     public static class ApiConfiguration
     {
@@ -40,8 +40,8 @@ namespace KlingerSystem.Employee.Api.Configuration
             }
 
             app.UseHttpsRedirection();
-            app.UseRouting();            
-            
+            app.UseRouting();
+
 
             app.UseEndpoints(endpoints =>
             {

@@ -117,52 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CompanyNameText_Erro" xml:space="preserve">
-    <value>O Campo Razão Social deve conter entre 5 e 500 caracteres.</value>
+  <data name="CompanyId_ERRO_MGS" xml:space="preserve">
+    <value>O CompanyId está inválido.</value>
   </data>
-  <data name="FantasyNameText_Erro" xml:space="preserve">
-    <value>O campo Nome Fantasia deve conter entre 5 e 255 caracteres.</value>
-  </data>
-  <data name="JURIDICO_CPF_ERRO" xml:space="preserve">
-    <value>Empresa do tipo Juridico, não pode ser incluso um cpf.</value>
-  </data>
-  <data name="MatrizId_Erro" xml:space="preserve">
-    <value>Matriz id inválido.</value>
-  </data>
-  <data name="MunicipalRegistrationText_Erro" xml:space="preserve">
-    <value>O campo Inscrição Municipal deve conter entre 5 e 20 caracteres.</value>
-  </data>
-  <data name="NUMBER_REPIT_ERRO_MSG" xml:space="preserve">
-    <value>Número já adicionado.</value>
-  </data>
-  <data name="PERSONTYPE_ERRO" xml:space="preserve">
-    <value>Tipo Pessoa inválido.</value>
-  </data>
-  <data name="PHISYCAL_CNPJ_ERRO" xml:space="preserve">
-    <value>Empresa do tipo Físical, não pode ser inclusa um cnpj</value>
-  </data>
-  <data name="PHONE_COUNT_MAX_ERRO_MSG" xml:space="preserve">
-    <value>Máximo de telefones permitidos, são 2.</value>
-  </data>
-  <data name="PHYSICAL_COMPANYNAME_ERRO" xml:space="preserve">
-    <value>Empresa do tipo Físical, não pode incluir Razão Social.</value>
-  </data>
-  <data name="PHYSICAL_FANTASYNAME_ERRO" xml:space="preserve">
-    <value>Empresa do tipo Físical, não pode incluir Nome Fantasia.</value>
-  </data>
-  <data name="PHYSICAL_MUNICIPALREGISTRATION_ERRO" xml:space="preserve">
-    <value>Empresa do tipo Física, não pode incluir Incrição Municipal</value>
-  </data>
-  <data name="PHYSICAL_STATEREGISTRATION_ERRO" xml:space="preserve">
-    <value>Empresa do tipo Física, não pode incluir Incrição Estadual.</value>
-  </data>
-  <data name="StateRegistrationText_Erro" xml:space="preserve">
-    <value>O campo Inscrição Estadual deve conter 14 caracteres.</value>
-  </data>
-  <data name="TAXESPECIALREGIME_ERRO" xml:space="preserve">
-    <value>Regime Especial Tributário inválido.</value>
-  </data>
-  <data name="TAXREGIME_ERRO" xml:space="preserve">
-    <value>Regime tributário inválido.</value>
+  <data name="EmailAddress_Erro_MSG" xml:space="preserve">
+    <value>O E-mail está inválido.</value>
   </data>
 </root>

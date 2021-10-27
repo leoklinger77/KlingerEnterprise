@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CommandsTests\" />
+    <ProjectReference Include="..\..\src\Services\KlingerSystem.Business.Api\KlingerSystem.Business.Api.csproj" />
   </ItemGroup>
 
 </Project>

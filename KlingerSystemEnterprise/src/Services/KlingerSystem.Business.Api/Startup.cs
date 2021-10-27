@@ -1,59 +1,51 @@
+using KlingerSystem.Business.Api.Configuration;
+using KlingerSystem.Business.Infrastructure.Data;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace KlingerSystem.Business.Api
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public Startup(IHostEnvironment hostEnvironment)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(hostEnvironment.ContentRootPath)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
+                .AddEnvironmentVariables();
 
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
+            if (hostEnvironment.IsDevelopment())
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "KlingerSystem.Business.Api", Version = "v1" });
-            });
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "KlingerSystem.Business.Api v1"));
+                builder.AddUserSecrets<Startup>();
             }
 
-            app.UseHttpsRedirection();
+            Configuration = builder.Build();
+        }
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddMediatR(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup));
 
-            app.UseRouting();
+            services.AddDbContext<BusinessContext>(option => option.UseSqlServer(Configuration.GetConnectionString("Connection")));
 
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            services.ApiConfig(Configuration);
+            services.RegisterDependencyInjection();
+            services.SwaggerConfig();
+            services.AddMessageBusConfiguration(Configuration);
+        }
+        
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
+        {
+            app.ApiAppConfig(env);
+            app.SwaggerApp(provider);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace KlingerSystem.Employee.Api
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
-            app.WebAppConfig(env);
+            app.ApiAppConfig(env);
             app.SwaggerApp(provider);
         }
     }
