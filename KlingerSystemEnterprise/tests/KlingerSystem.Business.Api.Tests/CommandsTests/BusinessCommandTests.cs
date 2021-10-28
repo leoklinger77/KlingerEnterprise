@@ -6,7 +6,7 @@ namespace KlingerSystem.Business.Api.Tests.CommandsTests
     public class BusinessCommandTests
     {
         [Fact(DisplayName = "Registrando o primeiro comercio")]
-        [Trait("Application", "Commands Business")]
+        [Trait(" Application", "Commands Business")]
         public void Company_RegistrandoSeuPrimeiroComercio_DeveExecutarComSucesso()
         {
             //Arrange

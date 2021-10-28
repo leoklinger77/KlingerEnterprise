@@ -11,10 +11,10 @@ using Microsoft.Extensions.Hosting;
 
 namespace KlingerSystem.Authentication.Api
 {
-    public class Startup
+    public class StartupApiTests
     {
         public IConfiguration Configuration { get; }
-        public Startup(IHostEnvironment hostEnvironment)
+        public StartupApiTests(IHostEnvironment hostEnvironment)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
@@ -33,19 +33,17 @@ namespace KlingerSystem.Authentication.Api
         {
             services.AddMediatR(typeof(Startup));            
 
-            services.AddDbContext<AuthenticationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("Connection")));
+            services.AddDbContext<AuthenticationDbContext>(option => option.UseInMemoryDatabase(databaseName: "InMemoryDb"));
 
             services.ApiConfig(Configuration);
             services.IdentityConfig(Configuration);            
             services.RegisterDependencyInjection();                        
-            services.AddMessageBusConfiguration(Configuration);
-            services.SwaggerConfig();
+            services.AddMessageBusConfiguration(Configuration);            
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
-            app.ApiAppConfig(env);
-            app.SwaggerApp(provider);
+            app.ApiAppConfig(env);            
         }
     }
 }

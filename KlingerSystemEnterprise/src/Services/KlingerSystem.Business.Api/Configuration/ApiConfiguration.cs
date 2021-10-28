@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using KlingerSystem.Api.Identity;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -30,6 +31,8 @@ namespace KlingerSystem.Business.Api.Configuration
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
+
+            services.AddJwtConfiguration(configuration);
         }
 
         public static void ApiAppConfig(this IApplicationBuilder app, IWebHostEnvironment env)
@@ -42,6 +45,7 @@ namespace KlingerSystem.Business.Api.Configuration
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthConfiguration();
 
             app.UseEndpoints(endpoints =>
             {

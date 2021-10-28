@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetDevPack.Security.Jwt.AspNetCore;
 
-namespace KlingerSystem.Employee.Api.Configuration
+namespace KlingerSystem.Authentication.Api.Configuration
 {
     public static class ApiConfiguration
     {
@@ -30,9 +31,7 @@ namespace KlingerSystem.Employee.Api.Configuration
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;
-            });
-
-            services.AddJwtConfiguration(configuration);
+            });                        
         }
 
         public static void ApiAppConfig(this IApplicationBuilder app, IWebHostEnvironment env)
@@ -44,14 +43,14 @@ namespace KlingerSystem.Employee.Api.Configuration
 
             app.UseHttpsRedirection();
             app.UseRouting();
-
             app.UseAuthConfiguration();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-        }
 
+            app.UseJwksDiscovery();
+        }
     }
 }
